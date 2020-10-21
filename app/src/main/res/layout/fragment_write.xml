@@ -1,52 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin">
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/message_write_tag"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+    android:layout_height="match_parent">
 
-    <com.skyfishjy.library.RippleBackground
-        android:id="@+id/wanimation"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:rb_color="#cacfd1"
-        app:rb_duration="3000"
-        app:rb_radius="32dp"
-        app:rb_rippleAmount="4"
-        app:rb_scale="6">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/Logo"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_nfc"
-            android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/buttonbg"
+            android:gravity="center">
 
-    </com.skyfishjy.library.RippleBackground>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/message_write_tag"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorEditText" />
+        </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:visibility="gone"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="@string/message_tap_tag"
-        android:textAlignment="center"/>
-</LinearLayout>
+            <com.skyfishjy.library.RippleBackground
+                android:id="@+id/wanimation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:rb_color="#cacfd1"
+                app:rb_duration="3000"
+                app:rb_radius="32dp"
+                app:rb_rippleAmount="4"
+                app:rb_scale="6">
+
+                <ImageView
+                    android:id="@+id/Logo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_nfc" />
+
+            </com.skyfishjy.library.RippleBackground>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/message_tap_tag"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

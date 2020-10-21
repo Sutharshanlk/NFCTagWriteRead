@@ -36,7 +36,7 @@ public class NFCReadFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.fragment_read, container, false);
+        View view = inflater.inflate(R.layout.fragment_read,container,false);
         initViews(view);
 
         // animation
@@ -54,7 +54,7 @@ public class NFCReadFragment extends DialogFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListener = (MainActivity) context;
+        mListener = (MainActivity)context;
         mListener.onDialogDisplayed();
     }
 
@@ -63,8 +63,7 @@ public class NFCReadFragment extends DialogFragment {
         super.onDetach();
         mListener.onDialogDismissed();
     }
-
-    public void onNfcDetected(Ndef ndef) {
+    public void onNfcDetected(Ndef ndef){
 
         readFromNFC(ndef);
     }
@@ -74,21 +73,23 @@ public class NFCReadFragment extends DialogFragment {
         try {
             ndef.connect();
             NdefMessage ndefMessage = ndef.getNdefMessage();
-            if (ndefMessage != null) {
+            if(ndefMessage!=null) {
                 String message = new String(ndefMessage.getRecords()[0].getPayload());
-                
-                if (message.contains("%")) {
+                if (message.trim().length() != 0) {
 
-                    String[] itemData = message.split("\\%");
+                    if (message.contains("%")) {
 
-                    Log.d(TAG, "readFromNFC: " + message);
-                    mTvMessage.setText("SKU " + itemData[0] + " " + itemData[1]);
-                } else {
-                    Log.d(TAG, "readFromNFC: " + message);
-                    mTvMessage.setText(message);
+                        String[] itemData = message.split("\\%");
+
+                        Log.d(TAG, "readFromNFC: " + message);
+                        mTvMessage.setText("SKU " + itemData[0] + " " + itemData[1]);
+                    } else {
+                        Log.d(TAG, "readFromNFC: " + message);
+                        mTvMessage.setText(message);
+                    }
                 }
-
-            } else {
+            }
+            else {
                 mTvMessage.setText("No Data in the Tag..");
             }
             ndef.close();
